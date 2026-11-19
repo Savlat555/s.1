@@ -1,0 +1,243 @@
+:root {
+	color-scheme: dark;
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	background: #101716;
+	color: #f0f3e9;
+	font-synthesis: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	min-width: 320px;
+	min-height: 100vh;
+	margin: 0;
+	background:
+		repeating-linear-gradient(135deg, transparent 0 42px, rgb(255 255 255 / 2%) 42px 43px),
+		radial-gradient(ellipse at 50% 45%, #26332c 0, #18211e 42%, #101716 78%);
+}
+
+.clock-page {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 48px 20px;
+	text-align: center;
+	animation: arrive 700ms ease-out both;
+}
+
+.clock-kicker,
+.ad-label,
+.ad-eyebrow {
+	margin: 0;
+	color: #d7ed87;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.clock-page h1 {
+	margin: 14px 0 34px;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: clamp(32px, 8vw, 56px);
+	font-weight: 400;
+}
+
+.time-display {
+	display: flex;
+	align-items: center;
+	gap: clamp(8px, 3vw, 24px);
+	font-family: "Courier New", monospace;
+	font-size: clamp(54px, 15vw, 120px);
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+}
+
+.time-separator {
+	padding-bottom: 12px;
+	color: #d7ed87;
+	font-size: 0.72em;
+	animation: blink 1s steps(2, start) infinite;
+}
+
+.time-labels {
+	display: grid;
+	width: min(100%, 520px);
+	grid-template-columns: repeat(3, 1fr);
+	margin-top: 16px;
+	color: #91a098;
+	font-size: 10px;
+	letter-spacing: 1.5px;
+}
+
+.date-display {
+	margin: 36px 0 0;
+	color: #c4cec5;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 18px;
+	text-transform: capitalize;
+}
+
+.clock-footer {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 62px;
+	color: #91a098;
+	font-size: 12px;
+}
+
+.live-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #d7ed87;
+	box-shadow: 0 0 12px rgb(215 237 135 / 60%);
+}
+
+.ad-overlay {
+	position: fixed;
+	z-index: 2;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	padding: 20px;
+	background: rgb(5 10 8 / 78%);
+	animation: fade-in 350ms ease-out both;
+}
+
+.ad-overlay[hidden],
+.ad-close[hidden] {
+	display: none;
+}
+
+.ad-panel {
+	position: relative;
+	width: min(100%, 520px);
+	min-height: 330px;
+	overflow: hidden;
+	padding: 30px;
+	border: 1px solid rgb(215 237 135 / 34%);
+	background: #e9eddb;
+	color: #17211c;
+	box-shadow: 0 24px 90px rgb(0 0 0 / 45%);
+	animation: rise-in 400ms ease-out both;
+}
+
+.ad-label {
+	display: inline-block;
+	padding: 7px 9px;
+	background: #d7ed87;
+	color: #17211c;
+	font-size: 9px;
+	letter-spacing: 1.2px;
+}
+
+.ad-close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 38px;
+	height: 38px;
+	border: 1px solid #aeb8a9;
+	border-radius: 50%;
+	background: transparent;
+	color: #17211c;
+	cursor: pointer;
+	font: 28px/1 "Trebuchet MS", sans-serif;
+}
+
+.ad-close:hover,
+.ad-close:focus-visible {
+	background: #d7ed87;
+	outline: 2px solid #17211c;
+	outline-offset: 2px;
+}
+
+.ad-eyebrow {
+	margin-top: 46px;
+	color: #5a705e;
+	font-size: 10px;
+}
+
+.ad-panel h2 {
+	max-width: 370px;
+	margin: 12px 0;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: clamp(30px, 8vw, 46px);
+	font-weight: 400;
+	line-height: 1.05;
+}
+
+.ad-copy {
+	max-width: 310px;
+	margin: 14px 0 0;
+	color: #526056;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.ad-stamp {
+	position: absolute;
+	right: 25px;
+	bottom: 24px;
+	display: grid;
+	width: 72px;
+	height: 72px;
+	align-content: center;
+	border: 1px solid #9ca991;
+	border-radius: 50%;
+	color: #657561;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 11px;
+	line-height: 1.4;
+	text-align: center;
+	transform: rotate(12deg);
+}
+
+@keyframes blink {
+	to { opacity: 0.35; }
+}
+
+@keyframes arrive {
+	from { opacity: 0; transform: translateY(10px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes rise-in {
+	from { opacity: 0; transform: translateY(14px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 420px) {
+	.ad-panel {
+		min-height: 360px;
+		padding: 24px;
+	}
+
+	.ad-stamp {
+		right: 18px;
+		bottom: 18px;
+		width: 60px;
+		height: 60px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+	}
+}
